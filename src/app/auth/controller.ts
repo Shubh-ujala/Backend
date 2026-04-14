@@ -4,6 +4,7 @@ import { createHmac, randomBytes } from "node:crypto"
 import { db } from "../../db"
 import { userTable } from "../../db/schema"
 import { eq } from "drizzle-orm"
+import { createUserToken } from "./utils/token"
 class AuthenticationController{
     public async handleSignup(req:Request, res:Response){
         const validationResult = await signUpPayloadModel.safeParseAsync(req.body)
@@ -76,11 +77,15 @@ class AuthenticationController{
         });
 
         // if user is genuine then generate the token and return that token back to the user
-        //TODO : token banao 
+        
+
+        const token = createUserToken({
+            id: userSelect.id
+        })
 
         return res.json({
             message : 'SignIn success!',
-            data:{token : 1}
+            data:{token : token}
         })
     }
 }

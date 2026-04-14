@@ -1,10 +1,11 @@
 import express from "express";
 import type { Express } from "express";
+import {authRouter} from "./auth/routes"
 export  function createExpressServer(): Express {
   const app = express();
 
   // middleware
-
+  app.use(express.json());
   // routes
   app.get("/", (req, res) => {
     
@@ -13,6 +14,7 @@ export  function createExpressServer(): Express {
       text:"Successflly created express server"
     });
   });
+  app.use('/auth',authRouter);
 
   // return the app instance
   return app;

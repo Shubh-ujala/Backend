@@ -9,7 +9,8 @@ export  function createExpressServer(): Express {
   app.get("/", (req, res) => {
     
     return res.json({
-      message:"Welcome to the  server"
+      message:"Welcome to the  server",
+      text:"Successflly created express server"
     });
   });
 

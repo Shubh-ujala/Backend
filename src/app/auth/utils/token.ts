@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-interface userTokenPayload{
+export interface userTokenPayload{
     id:string
 }
 

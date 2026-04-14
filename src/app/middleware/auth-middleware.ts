@@ -6,12 +6,12 @@ export function authenticationMiddleware(){
     return function(req:Request, res:Response, next:NextFunction){
         const header = req.headers['authorization']
 
-        if(!header) next();
+        if(!header) return next();
         if(!header?.startsWith('Bearer')) return res.status(400).json({
             error :"authorization header must start with Baarer"
         })
 
-        const token = header.split(' ')[1];
+        const token = header?.split(' ')[1];
         if(!token) return res.status(400).json({
             error :"authorization header must start with Barer and followed by token"
         })

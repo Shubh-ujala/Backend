@@ -13,5 +13,6 @@ export  function createExpressServer(): Express {
     });
   });
 
+  // return the app instance
   return app;
 }

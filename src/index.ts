@@ -3,6 +3,7 @@ import { createExpressServer } from "./app";
 
 async function main(){
     try {
+        // here createServer(handler) **handler is the function that will be called for every incoming request to the server
         const server =  http.createServer(createExpressServer());
         const PORT : number = 4000
 
